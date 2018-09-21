@@ -14,7 +14,7 @@ public class PostService {
     public Post createPost(Post post){
         return postRepository.save(post);
     }
-    public Optional<Post> getPostById(long id){
+    public Optional<Post> getPostById(Long id){
         return postRepository.findById(id);
     }
     public List<Post> getAllPost(){

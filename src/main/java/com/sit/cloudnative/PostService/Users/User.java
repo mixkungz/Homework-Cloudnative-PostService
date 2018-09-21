@@ -20,7 +20,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank
     private String firstname;
@@ -42,18 +42,9 @@ public class User implements Serializable {
         super();
     }
 
-    public User(int id, String firstname, String lastname) {
-        this.id = id;
+    public User(@NotBlank String firstname, @NotBlank String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstname() {
@@ -71,4 +62,5 @@ public class User implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
 }

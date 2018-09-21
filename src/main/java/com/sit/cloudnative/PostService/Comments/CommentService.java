@@ -14,7 +14,7 @@ public class CommentService {
     public Comment createComment(Comment comment){
         return commentRepository.save(comment);
     }
-    public Comment getCommentById(long id){
+    public Comment getCommentById(Long id){
         return commentRepository.getOne(id);
     }
     public List<Comment> getAllComments(){
