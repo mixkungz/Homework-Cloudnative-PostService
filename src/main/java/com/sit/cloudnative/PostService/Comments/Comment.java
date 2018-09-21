@@ -1,6 +1,8 @@
 package com.sit.cloudnative.PostService.Comments;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sit.cloudnative.PostService.Posts.Post;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -23,6 +25,11 @@ public class Comment implements Serializable {
     @NotBlank
     @Column(name = "comment_message")
     private String commentMessage;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Post.class)
+    @JoinColumn(name = "post_id",nullable = false)
+    @JsonIgnore
+    private Post post;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,5 +54,13 @@ public class Comment implements Serializable {
 
     public void setCommentMessage(String commentMessage) {
         this.commentMessage = commentMessage;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }
