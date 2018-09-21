@@ -14,10 +14,11 @@ public class PostService {
     public Post createPost(Post post){
         return postRepository.save(post);
     }
-    public Optional<Post> getPostById(Long id){
-        return postRepository.findById(id);
+    public Post getPostById(Long id){
+        return postRepository.getOne(id);
     }
     public List<Post> getAllPost(){
         return postRepository.findAll();
     }
+
 }
