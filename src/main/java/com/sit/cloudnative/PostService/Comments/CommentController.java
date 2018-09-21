@@ -12,10 +12,14 @@ import javax.validation.Valid;
 
 @RestController
 public class CommentController {
+
     @Autowired
     private CommentService commentService;
 
-    @RequestMapping(method = RequestMethod.POST,value = "/comments")
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/comments"
+    )
     public ResponseEntity<Comment> createComment(@Valid @RequestBody Comment comment){
         Comment comment_object = commentService.createComment(comment);
         return new ResponseEntity<Comment>(comment_object,HttpStatus.OK);
