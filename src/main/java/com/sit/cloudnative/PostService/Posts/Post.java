@@ -1,6 +1,7 @@
 package com.sit.cloudnative.PostService.Posts;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sit.cloudnative.PostService.Users.User;
 import org.springframework.data.annotation.CreatedDate;
@@ -20,7 +21,7 @@ import java.util.Date;
 public class Post implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotBlank
     private String title;
@@ -28,9 +29,10 @@ public class Post implements Serializable {
     @NotBlank
     private String description;
 
-//    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
-//    @JoinColumn(name = "user_id",nullable = false)
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
+    @JoinColumn(name = "user_id",nullable = false)
+    @JsonIgnore
+    private User user;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -43,6 +45,7 @@ public class Post implements Serializable {
     private Date updated_at;
 
     public Post() {
+        super();
     }
 
     public Post(@NotBlank String title, @NotBlank String description) {
@@ -64,5 +67,13 @@ public class Post implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
