@@ -25,14 +25,6 @@ public class UserController {
         return new ResponseEntity<List<User>>(users,HttpStatus.OK);
     }
 
-    @RequestMapping(
-            method = RequestMethod.POST,
-            value = "/users"
-    )
-    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
-        User user_object = userService.createUser(user);
-        return new ResponseEntity<User>(user_object,HttpStatus.CREATED);
-    }
 
     @RequestMapping(
             value = "/users/{id}",
@@ -42,6 +34,15 @@ public class UserController {
         User user = userService.getUserById(new Long(id));
         System.out.println(user.getFirstname()+' '+user.getLastname());
         return new ResponseEntity<User>(user,HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/users"
+    )
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+        User user_object = userService.createUser(user);
+        return new ResponseEntity<User>(user_object,HttpStatus.CREATED);
     }
 
     @RequestMapping(
