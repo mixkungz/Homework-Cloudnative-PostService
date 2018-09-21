@@ -21,7 +21,8 @@ public class Comment implements Serializable {
     private int id;
 
     @NotBlank
-    private String comment_message;
+    @Column(name = "comment_message")
+    private String commentMessage;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -33,15 +34,18 @@ public class Comment implements Serializable {
     @LastModifiedDate
     private Date updated_at;
 
-    public Comment(@NotBlank String comment_message) {
-        this.comment_message = comment_message;
+    public Comment() {
     }
 
-    public String getComment_message() {
-        return comment_message;
+    public Comment(@NotBlank String commentMessage) {
+        this.commentMessage = commentMessage;
     }
 
-    public void setComment_message(String comment_message) {
-        this.comment_message = comment_message;
+    public String getCommentMessage() {
+        return commentMessage;
+    }
+
+    public void setCommentMessage(String commentMessage) {
+        this.commentMessage = commentMessage;
     }
 }
