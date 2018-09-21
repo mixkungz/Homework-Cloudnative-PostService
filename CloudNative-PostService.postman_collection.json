@@ -1,0 +1,822 @@
+{
+	"info": {
+		"_postman_id": "ed3029f5-e116-40c2-ba6d-31facbbf6d0b",
+		"name": "CloudNative-PostService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete UserByUserId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8c616798-025b-4ce5-94f1-3488718563d3",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('delete status that return should be true', ()=>{",
+							"    //Arrange",
+							"    var status = pm.response.code",
+							"    //Assert",
+							"    pm.expect(status).to.eql(200)",
+							"    ",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete PostByPostId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fdb821ad-ff09-4087-a166-dee277dec1c2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('delete status that return should be true', ()=>{",
+							"    //Arrange",
+							"    var status = pm.response.code",
+							"    //Assert",
+							"    pm.expect(status).to.eql(200)",
+							"    ",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CommentByCommentId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8cc47eaa-641f-4732-8c89-c083dde71e0f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('delete status that return should be true', ()=>{",
+							"    //Arrange",
+							"    var status = pm.response.code",
+							"    //Assert",
+							"    pm.expect(status).to.eql(200)",
+							"    ",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update UserByUserId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3588dcc2-a35d-4f68-b2b5-2ab4e710bca1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('update user must return firstname = Justin', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var firstname = jsonData.firstname",
+							"",
+							"    //Assert",
+							"    pm.expect(firstname).to.eql(\"Justin\")",
+							"    ",
+							"})",
+							"pm.test('update user must return lastname = Barbie', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    ",
+							"    var lastname = jsonData.lastname",
+							"    //Assert",
+							"    pm.expect(lastname).to.eql(\"Barbie\")",
+							"    ",
+							"})",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Justin\",\n\t\"lastname\":\"Barbie\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update CommentByCommentId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aa3a8465-0b5a-477e-b9f0-baa5e9a8ad56",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('update comment must return commentMessage = Update comment eiei', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var commentMessage = jsonData.commentMessage",
+							"",
+							"    //Assert",
+							"    pm.expect(commentMessage).to.eql(\"Update comment eiei\")",
+							"    ",
+							"})",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"commentMessage\":\"Update comment eiei\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update PostByPostId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1dcd3dc-404b-415c-bf8a-9bd03792e1da",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('when update post must return title = new', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var title = jsonData.title",
+							"",
+							"    //Assert",
+							"    pm.expect(title).to.eql(\"new\")",
+							"    ",
+							"})",
+							"pm.test('when update post must return description = new desc', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    ",
+							"    var description = jsonData.description",
+							"    //Assert",
+							"    pm.expect(description).to.eql(\"new desc\")",
+							"    ",
+							"})",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"new\",\n    \"description\": \"new desc\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "31271cf9-0ab0-46ab-a2fc-fb25dc700631",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('create new user must return firstname = Steve', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var firstname = jsonData.firstname",
+							"",
+							"    //Assert",
+							"    pm.expect(firstname).to.eql(\"Steve\")",
+							"    ",
+							"})",
+							"pm.test('create new user must return lastname = Job', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    ",
+							"    var lastname = jsonData.lastname",
+							"    //Assert",
+							"    pm.expect(lastname).to.eql(\"Job\")",
+							"    ",
+							"})",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Steve\",\n\t\"lastname\":\"Job\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "521f73ad-0b76-4794-be9a-db4b1f112e96",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('create new post must return title = Hello this is new post', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var title = jsonData.title",
+							"",
+							"    //Assert",
+							"    pm.expect(title).to.eql(\"Hello this is new post\")",
+							"    ",
+							"})",
+							"pm.test('create new post must return description = lorem ipsum', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    ",
+							"    var description = jsonData.description",
+							"    //Assert",
+							"    pm.expect(description).to.eql(\"lorem ipsum\")",
+							"    ",
+							"})",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"Hello this is new post\",\n\t\"description\":\"lorem ipsum\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f3c7f64d-6f9c-4d16-a677-e3d943326b51",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('create new comment must return commentMessage = Hello Comment1', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var commentMessage = jsonData.commentMessage",
+							"",
+							"    //Assert",
+							"    pm.expect(commentMessage).to.eql(\"Hello Comment1\")",
+							"    ",
+							"})",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"commentMessage\":\"Hello Comment1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CommentsByCommentId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a6ba6ce-f7e8-497e-a3e3-ab4ed319ecb0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('comment_id =1 must has commentMessage = Hello Comment1', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var commentMessage = jsonData.commentMessage",
+							"",
+							"    //Assert",
+							"    pm.expect(commentMessage).to.eql(\"Hello Comment1\")",
+							"    ",
+							"})",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"qui q4324343\",\n\t\"description\":\"est rerum tempore vitae sequi sint nihil reprehenderit dolor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/comments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get AllComments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f94e3fa1-c8c5-486a-9396-79e94bd2b592",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('all comments must have 1 comment', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var data_length = jsonData.length",
+							"    //Assert",
+							"    pm.expect(data_length).to.eql(1)",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"qui q4324343\",\n\t\"description\":\"est rerum tempore vitae sequi sint nihil reprehenderit dolor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get PostById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5e55b63e-9b4f-4da3-8a22-d7e5d0252f27",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('post_id = 1 must has title = Hello this is new post', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var title = jsonData.title",
+							"",
+							"    //Assert",
+							"    pm.expect(title).to.eql(\"Hello this is new post\")",
+							"    ",
+							"})",
+							"pm.test('post_id = 1 must has description = lorem ipsum', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    ",
+							"    var description = jsonData.description",
+							"    //Assert",
+							"    pm.expect(description).to.eql(\"lorem ipsum\")",
+							"    ",
+							"})",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"qui q4324343\",\n\t\"description\":\"est rerum tempore vitae sequi sint nihil reprehenderit dolor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CommentsByPostId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "42115170-120f-4fb6-9135-1397ee366e2e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('get comment by post_id=1 must has 1 comment', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var data_length = jsonData.length",
+							"    //Assert",
+							"    pm.expect(data_length).to.eql(1)",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\":\"qui q4324343\",\n\t\"description\":\"est rerum tempore vitae sequi sint nihil reprehenderit dolor\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts/1/comments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"1",
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30515aaf-84d5-45d0-9b0a-f64c05234fb8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('users must have 4 person', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var data_length = jsonData.length",
+							"    //Assert",
+							"    pm.expect(data_length).to.eql(4)",
+							"})",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Phachara\",\n\t\"lastname\":\"Kamthong\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get UserById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1d1c4401-c665-480b-972a-a852b839b8f8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('user id 1 must has name = Steve', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    var firstname = jsonData.firstname",
+							"",
+							"    //Assert",
+							"    pm.expect(firstname).to.eql(\"Steve\")",
+							"    ",
+							"})",
+							"pm.test('user id 1 must has lastname = Job', ()=>{",
+							"    //Arrange",
+							"    var jsonData = pm.response.json()",
+							"    //Action",
+							"    ",
+							"    var lastname = jsonData.lastname",
+							"    //Assert",
+							"    pm.expect(lastname).to.eql(\"Job\")",
+							"    ",
+							"})",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
