@@ -4,6 +4,8 @@ package com.sit.cloudnative.PostService.Posts;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sit.cloudnative.PostService.Users.User;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -16,7 +18,7 @@ import java.util.Date;
 @Entity
 @Table(name = "posts")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"created_at", "updated_at"},
+@JsonIgnoreProperties(value = {"created_at", "updated_at","hibernateLazyInitializer","handler"},
         allowGetters = true)
 public class Post implements Serializable {
     @Id
@@ -32,6 +34,7 @@ public class Post implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = User.class)
     @JoinColumn(name = "user_id",nullable = false)
     @JsonIgnore
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @Column(nullable = false, updatable = false)

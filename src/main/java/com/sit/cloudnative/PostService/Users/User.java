@@ -11,11 +11,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 
+
 @Entity
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"created_at", "updated_at"},
+@JsonIgnoreProperties(value = {"created_at", "updated_at","hibernateLazyInitializer","handler"},
         allowGetters = true)
+
 public class User implements Serializable {
 
     @Id
