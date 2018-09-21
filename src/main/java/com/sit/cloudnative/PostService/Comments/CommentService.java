@@ -3,6 +3,7 @@ package com.sit.cloudnative.PostService.Comments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,4 +21,5 @@ public class CommentService {
     public List<Comment> getAllComments(){
         return commentRepository.findAll();
     }
+    public List<Comment> getAllCommentsByPostId(Long postId){ return  commentRepository.findByPost_Id(postId);}
 }
