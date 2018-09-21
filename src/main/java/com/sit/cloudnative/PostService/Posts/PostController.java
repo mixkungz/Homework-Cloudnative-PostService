@@ -34,7 +34,7 @@ public class PostController {
             value = "/posts"
     )
     public ResponseEntity<Post> createPost(@Valid @RequestBody Post post) {
-        User user = userService.getUserById(1);
+        User user = userService.getUserById(new Long(1));
         post.setUser(user);
         Post post_object = postService.createPost(post);
         return new ResponseEntity<Post>(post_object,HttpStatus.OK);
