@@ -31,18 +31,39 @@ public class UserController {
     )
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User user_object = userService.createUser(user);
+        return new ResponseEntity<User>(user_object,HttpStatus.CREATED);
+    }
+
+    @RequestMapping(
+            value = "/users/{id}",
+            method = RequestMethod.GET
+    )
+    public ResponseEntity<User> getUser(@PathVariable("id") int id) {
+        User user = userService.getUserById(new Long(id));
+        System.out.println(user.getFirstname()+' '+user.getLastname());
+        return new ResponseEntity<User>(user,HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.PUT,
+            value = "/users/{id}"
+    )
+    public ResponseEntity<User> updateUser(@PathVariable("id") int id,@Valid @RequestBody User user) {
+        User user_object = userService.getUserById(new Long(id));
+        user_object.setFirstname(user.getFirstname());
+        user_object.setLastname(user.getLastname());
+        user_object = userService.updateUser(user_object);
         return new ResponseEntity<User>(user_object,HttpStatus.OK);
     }
 
-//    @RequestMapping(
-//            value = "/users/{id}",
-//            method = RequestMethod.GET
-//    )
-//    public ResponseEntity<User> getUser(@PathVariable("id") int id) {
-//        User user = userService.getUserById(id);
-//        return new ResponseEntity<User>(user,HttpStatus.OK);
-//    }
-
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            value = "/users/{id}"
+    )
+    public ResponseEntity deleteUser(@PathVariable("id") int id) {
+        boolean deleteStatus = userService.deleteUser(new Long(id));
+        return new ResponseEntity(deleteStatus,HttpStatus.OK);
+    }
 
 
 }
