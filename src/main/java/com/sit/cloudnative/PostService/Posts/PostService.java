@@ -20,5 +20,13 @@ public class PostService {
     public List<Post> getAllPost(){
         return postRepository.findAll();
     }
-
+    public Post updateUser(Post post) {return postRepository.saveAndFlush(post);}
+    public boolean deletePost(Long postId) {
+        try{
+            postRepository.deleteById(postId);
+            return true;
+        }catch(Error err){
+            return false;
+        }
+    }
 }
