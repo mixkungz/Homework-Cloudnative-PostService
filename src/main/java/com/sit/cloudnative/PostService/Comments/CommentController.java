@@ -1,5 +1,7 @@
 package com.sit.cloudnative.PostService.Comments;
 
+import com.sit.cloudnative.PostService.Posts.Post;
+import com.sit.cloudnative.PostService.Posts.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +17,16 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
+    @Autowired
+    private PostService postService;
 
     @RequestMapping(
             method = RequestMethod.POST,
             value = "/comments"
     )
     public ResponseEntity<Comment> createComment(@Valid @RequestBody Comment comment){
+        Post post = postService.getPostById(new Long(1));
+        comment.setPost(post);
         Comment comment_object = commentService.createComment(comment);
         return new ResponseEntity<Comment>(comment_object,HttpStatus.OK);
     }
