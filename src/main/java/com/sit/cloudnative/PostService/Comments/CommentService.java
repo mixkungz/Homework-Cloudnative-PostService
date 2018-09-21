@@ -22,4 +22,13 @@ public class CommentService {
         return commentRepository.findAll();
     }
     public List<Comment> getAllCommentsByPostId(Long postId){ return  commentRepository.findByPost_Id(postId);}
+    public Comment updateComment(Comment user){ return commentRepository.saveAndFlush(user);}
+    public boolean deleteComment(Long user_id){
+        try{
+            commentRepository.deleteById(user_id);
+            return true;
+        }catch(Error err){
+            return false;
+        }
+    }
 }
