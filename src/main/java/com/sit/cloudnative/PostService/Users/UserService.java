@@ -17,4 +17,5 @@ public class UserService{
     public User createUser(User user) {
         return userRepository.save(user);
     }
+    public User getUserById(long id){ return userRepository.getOne(id);}
 }
